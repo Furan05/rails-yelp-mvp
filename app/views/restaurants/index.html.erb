@@ -1,0 +1,29 @@
+<h1>Liste des Restaurants</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Adresse</th>
+      <th>Catégorie</th>
+      <th>Évaluation</th> <!-- Ajout de la colonne Évaluation -->
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @restaurants.each do |restaurant| %>
+      <tr>
+        <td><%= restaurant.name %></td>
+        <td><%= restaurant.address %></td>
+        <td><%= restaurant.category %></td>
+        <td><%= restaurant.rating %></td> <!-- Affichage de la note -->
+        <td>
+          <%= link_to 'Voir', restaurant_path(restaurant) %>
+          <%= link_to 'Ajouter un avis', new_restaurant_review_path(restaurant) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Ajouter un restaurant', new_restaurant_path %>
